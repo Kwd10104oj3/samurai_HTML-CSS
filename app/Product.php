@@ -10,4 +10,9 @@ class Product extends Model
     {
         return $this->belong('App\Category');
     }
+
+    public function reviews()
+    {
+        return $this->hasMany('App\Review');
+    }
 }
