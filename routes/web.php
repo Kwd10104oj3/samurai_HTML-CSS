@@ -17,6 +17,8 @@ Route::get('users/carts', 'CartController@index')->name('carts.index');
 
 Route::post('users/carts', 'CartController@store')->name('carts.store');
 
+Route::put('users/carts', 'CartController@update')->name('carts.update');
+
 Route::delete('users/carts', 'CartController@destroy')->name('carts.destroy');
 
 Route::get('users/mypage', 'UserController@mypage')->name('mypage');
@@ -36,4 +38,6 @@ Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-URL::forceScheme('https');
+if (env('APP_ENV') === 'production') {
+    URL::forceScheme('https');
+}
