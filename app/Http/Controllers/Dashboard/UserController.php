@@ -31,6 +31,14 @@ class UserController extends Controller
 
     public function destroy(User $user)
     {
-        //
+        if ($user->deleted_flag) {
+            $user->deleted_flag = false;
+        } else {
+            $user->deleted_flag = true;
+        }
+
+       $user->update();
+
+       return redirect()->route('dashboard.users.index');
     }
 }
